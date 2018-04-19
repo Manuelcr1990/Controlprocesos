@@ -21,7 +21,7 @@ namespace Controlprocesos.Models {
     }
 
     public class IdentityDBContext : IdentityDbContext<ApplicationUser> {
-        public IdentityDBContext() : base("IdentityConnection", throwIfV1Schema: false) {}
+        public IdentityDBContext() : base("CP_Identity", throwIfV1Schema: false) {}
 
         public static IdentityDBContext Create() {
             return new IdentityDBContext();

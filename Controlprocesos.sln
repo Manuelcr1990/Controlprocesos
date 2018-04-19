@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2010
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlprocesos", "Controlprocesos\Controlprocesos.csproj", "{B714B6D9-7178-4A89-A8F6-3CC6D56755A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controlprocesos.Model", "Controlprocesos.Model\Controlprocesos.Model.csproj", "{FAC0ABFA-B515-4B97-91F3-EB2554B1018B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B714B6D9-7178-4A89-A8F6-3CC6D56755A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B714B6D9-7178-4A89-A8F6-3CC6D56755A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B714B6D9-7178-4A89-A8F6-3CC6D56755A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAC0ABFA-B515-4B97-91F3-EB2554B1018B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAC0ABFA-B515-4B97-91F3-EB2554B1018B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAC0ABFA-B515-4B97-91F3-EB2554B1018B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAC0ABFA-B515-4B97-91F3-EB2554B1018B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
