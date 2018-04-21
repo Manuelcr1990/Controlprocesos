@@ -194,6 +194,7 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ODPController.cs" />
     <Compile Include="Controllers\ProcessesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -271,6 +272,11 @@
     <Content Include="Views\Processes\Details.cshtml" />
     <Content Include="Views\Processes\Edit.cshtml" />
     <Content Include="Views\Processes\Index.cshtml" />
+    <Content Include="Views\ODP\Create.cshtml" />
+    <Content Include="Views\ODP\Delete.cshtml" />
+    <Content Include="Views\ODP\Details.cshtml" />
+    <Content Include="Views\ODP\Edit.cshtml" />
+    <Content Include="Views\ODP\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
