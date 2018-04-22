@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Client.cs" />
     <Compile Include="CP.cs" />
+    <Compile Include="vwUser.cs" />
     <Compile Include="ODP.cs" />
     <Compile Include="ODPProcess.cs" />
     <Compile Include="Process.cs" />

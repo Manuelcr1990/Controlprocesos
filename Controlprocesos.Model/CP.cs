@@ -11,9 +11,12 @@ namespace Controlprocesos.Model {
         public virtual DbSet<ODP> ODPs { get; set; }
         public virtual DbSet<ODPProcess> ODPProcesses { get; set; }
         public virtual DbSet<Process> Processes { get; set; }
+        public virtual DbSet<vwUser> vwUsers { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder) {
+
+            #region Client
             modelBuilder.Entity<Client>()
                 .Property(e => e.Name)
                 .IsUnicode(false);
@@ -34,7 +37,8 @@ namespace Controlprocesos.Model {
                 .HasMany(e => e.ODPs)
                 .WithRequired(e => e.Client)
                 .WillCascadeOnDelete(false);
-
+            #endregion
+            #region ODP
             modelBuilder.Entity<ODP>()
                 .Property(e => e.NODP)
                 .IsUnicode(false);
@@ -51,11 +55,13 @@ namespace Controlprocesos.Model {
                 .HasMany(e => e.ODPProcesses)
                 .WithRequired(e => e.ODP)
                 .WillCascadeOnDelete(false);
-
+            #endregion
+            #region ODPProcess
             modelBuilder.Entity<ODPProcess>()
                 .Property(e => e.Notes)
                 .IsUnicode(false);
-
+            #endregion
+            #region Process
             modelBuilder.Entity<Process>()
                 .Property(e => e.Title)
                 .IsUnicode(false);
@@ -72,6 +78,8 @@ namespace Controlprocesos.Model {
                 .HasMany(e => e.ODPProcesses)
                 .WithRequired(e => e.Process)
                 .WillCascadeOnDelete(false);
+            #endregion
+
         }
     }
 }

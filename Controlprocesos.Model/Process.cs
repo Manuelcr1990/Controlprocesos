@@ -19,12 +19,15 @@ namespace Controlprocesos.Model
 
         [Required]
         [StringLength(150)]
+        [Display(Name = "Título")]
         public string Title { get; set; }
 
         [Required]
+        [Display(Name = "Descripción")]
         public string Description { get; set; }
 
         [Required]
+        [Display(Name = "Notas")]
         public string Notes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
