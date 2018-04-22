@@ -35,12 +35,15 @@ namespace Controlprocesos.Model
         public string Notes { get; set; }
 
         [Display(Name = "Fecha de creación")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime CreatedDate { get; set; }
 
         [Display(Name = "Fecha límite")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime DueDate { get; set; }
 
         [Display(Name = "Fecha finalización")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime? FinishedDate { get; set; }
 
         [Display(Name = "Archivo PDF")]

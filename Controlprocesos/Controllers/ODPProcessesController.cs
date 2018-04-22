@@ -35,6 +35,15 @@ namespace Controlprocesos.Controllers {
             return View(oDPProcess);
         }
 
+        [HttpPost]
+        public ActionResult ChangeODPProcessStatus(int ODPProcessId, int status) {
+            var item = db.ODPProcesses.Find(ODPProcessId);
+            if (item == null) return HttpNotFound();
+            item.Status = Convert.ToByte(status);
+            db.SaveChanges();
+            return RedirectToAction("Index", "ODPProcesses");
+        }
+
         // GET: ODPProcesses/Create
         [Authorize(Roles = "Manager")]
         public ActionResult Create() {

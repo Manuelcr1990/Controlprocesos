@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Tables.sql" />
+    <Content Include="Tables2.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

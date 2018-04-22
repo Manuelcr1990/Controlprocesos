@@ -7,7 +7,7 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create", "ODPProcesses")
 </p>
 <table class="table">
     <tr>
@@ -26,6 +26,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Notes)
         </th>
+        <th></th>
         <th></th>
     </tr>
 
@@ -47,11 +48,51 @@
             @Html.DisplayFor(modelItem => item.Notes)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <form action="@Url.Action("ChangeODPProcessStatus", "ODPProcesses")" method="post">
+                <input type="hidden" name="ODPProcessId" value="@item.Id" />
+                <label>
+                    En espera
+                    @if (item.Status == 2) {
+                        <input class="changeStatus" type="radio" name="status" value="2" checked="checked" />
+                    } else {
+                        <input class="changeStatus" type="radio" name="status" value="2" />
+                    }
+                </label>
+                |
+                <label>
+                    En proceso
+                    @if (item.Status == 1) {
+                        <input class="changeStatus" type="radio" name="status" value="1" checked="checked" />
+                    } else {
+                        <input class="changeStatus" type="radio" name="status" value="1" />
+                    }
+                </label>
+                |
+                <label>
+                    Completado
+                    @if (item.Status == 3) {
+                        <input class="changeStatus" type="radio" name="status" value="3" checked="checked" />
+                    } else {
+                        <input class="changeStatus" type="radio" name="status" value="3" />
+                    }
+                </label>
+            </form>
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", "ODPProcesses", new { id=item.Id }, null) |
+            @Html.ActionLink("Details", "Details", "ODPProcesses", new { id=item.Id }, null) |
+            @Html.ActionLink("Delete", "Delete", "ODPProcesses", new { id=item.Id }, null)
         </td>
     </tr>
 }
 
 </table>
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('.changeStatus').change(function (e) {
+                $(this)[0].form.submit();
+            })
+        })
+    </script>
+}
