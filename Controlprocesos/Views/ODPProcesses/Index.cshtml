@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Lista de procesos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create", "ODPProcesses")
+    @Html.ActionLink("Asignar Proceso", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -79,9 +79,9 @@
             </form>
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", "ODPProcesses", new { id=item.Id }, null) |
-            @Html.ActionLink("Details", "Details", "ODPProcesses", new { id=item.Id }, null) |
-            @Html.ActionLink("Delete", "Delete", "ODPProcesses", new { id=item.Id }, null)
+            @Html.ActionLink("Editar", "Edit", "ODPProcesses", new { id=item.Id }, null) |
+            @Html.ActionLink("Detalles", "Details", "ODPProcesses", new { id=item.Id }, null) |
+            @Html.ActionLink("Eliminar", "Delete", "ODPProcesses", new { id=item.Id }, null)
         </td>
     </tr>
 }

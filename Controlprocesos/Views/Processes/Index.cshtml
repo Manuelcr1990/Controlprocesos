@@ -4,13 +4,14 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Procesos de Producción</h2>
 @if (User.IsInRole("Manager"))
 {
 
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>}
+<p>
+    @Html.ActionLink("Nuevo proceso", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+
+</p>}
 <table class="table">
     <tr>
         <th>
@@ -38,13 +39,13 @@
                 @Html.DisplayFor(modelItem => item.Notes)
             </td>
             <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                @Html.ActionLink("Detalles |", "Details", new { id = item.Id }) 
                 @if (User.IsInRole("Manager"))
                 {
 
                 
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @Html.ActionLink("Editar |", "Edit", new { id = item.Id }) 
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Id })
                 }
             </td>
         </tr>

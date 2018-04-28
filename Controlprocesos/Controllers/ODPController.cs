@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Controlprocesos.Model;
+using PagedList;
 
 namespace Controlprocesos.Controllers {
     public class ODPController : Controller {
@@ -14,9 +15,57 @@ namespace Controlprocesos.Controllers {
 
         // GET: ODP
         [Authorize(Roles = "Manager,Employee")]
-        public ActionResult Index() {
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page) {
             var oDPs = db.ODPs.Include(o => o.Client);
-            return View(oDPs.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            oDPs = from s in db.ODPs
+                          select s;
+
+
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                oDPs = oDPs.Where(s => s.NODP.Contains(searchString)); 
+            }
+          
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    oDPs = oDPs.OrderByDescending(s => s.NODP);
+                    break;
+                default:
+                    oDPs = oDPs.OrderBy(s => s.NODP);
+
+                    break;
+            }
+
+            //return View(clients.ToList());
+            //int pageSize = 3;
+
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(oDPs.ToPagedList(pageNumber, pageSize));
+
+
+
+
+
+
+            //return View(oDPs.ToList());
         }
 
         // GET: ODP/Details/5

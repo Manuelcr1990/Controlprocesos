@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Detailles de la ODP</h2>
 
 <div>
-    <h4>ODP</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -77,8 +77,8 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Regresar", "Index")
 </p>
 <hr />
 @{Html.RenderPartial("~/Views/ODPProcesses/Index.cshtml", Model.ODPProcesses);}
