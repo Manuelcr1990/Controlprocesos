@@ -94,7 +94,7 @@
                 @Html.DisplayFor(modelItem => item.FinishedDate)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PDFFile)
+                <a class="btn btn-primary btn-lg fa fa-file-pdf-o" href="@Url.Action("GetPDF", "ODP", new { pdfFileName = item.PDFFile })"></a>
             </td>
             <td>
                 @if (User.IsInRole("Manager"))

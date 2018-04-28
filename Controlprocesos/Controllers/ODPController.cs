@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Controlprocesos.Model;
 using PagedList;
+using System.IO;
 
 namespace Controlprocesos.Controllers {
     public class ODPController : Controller {
@@ -21,29 +22,24 @@ namespace Controlprocesos.Controllers {
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
 
-            if (searchString != null)
-            {
+            if (searchString != null) {
                 page = 1;
-            }
-            else
-            {
+            } else {
                 searchString = currentFilter;
             }
 
             ViewBag.CurrentFilter = searchString;
 
             oDPs = from s in db.ODPs
-                          select s;
+                   select s;
 
 
 
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                oDPs = oDPs.Where(s => s.NODP.Contains(searchString)); 
+            if (!String.IsNullOrEmpty(searchString)) {
+                oDPs = oDPs.Where(s => s.NODP.Contains(searchString) || s.Client.Name.Contains(searchString));
             }
-          
-            switch (sortOrder)
-            {
+
+            switch (sortOrder) {
                 case "name_desc":
                     oDPs = oDPs.OrderByDescending(s => s.NODP);
                     break;
@@ -78,6 +74,7 @@ namespace Controlprocesos.Controllers {
             if (oDP == null) {
                 return HttpNotFound();
             }
+            Session["CurrentODP"] = id.Value;
             return View(oDP);
         }
 
@@ -158,6 +155,12 @@ namespace Controlprocesos.Controllers {
             db.ODPs.Remove(oDP);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet, ActionName("GetPDF")]
+        [Authorize(Roles = "Manager,Employee")]
+        public ActionResult GetPDF(String pdfFileName) {
+            return File(System.IO.File.ReadAllBytes(Server.MapPath("~/App_Data/" + pdfFileName)), "application/pdf");
         }
 
         protected override void Dispose(bool disposing) {

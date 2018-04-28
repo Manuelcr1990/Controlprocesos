@@ -7,7 +7,7 @@
 <h2>Lista de procesos</h2>
 
 <p>
-    @Html.ActionLink("Asignar Proceso", "Create", null, htmlAttributes: new { @class = "btn btn-primary" })
+    @Html.ActionLink("Asignar proceso", "Create", "ODPProcesses", null , new { @class = "btn btn-primary" })
 </p>
 <table class="table">
     <tr>
@@ -87,12 +87,3 @@
 }
 
 </table>
-@section Scripts {
-    <script type="text/javascript">
-        $(function () {
-            $('.changeStatus').change(function (e) {
-                $(this)[0].form.submit();
-            })
-        })
-    </script>
-}

@@ -41,13 +41,28 @@ namespace Controlprocesos.Controllers {
             if (item == null) return HttpNotFound();
             item.Status = Convert.ToByte(status);
             db.SaveChanges();
-            return RedirectToAction("Index", "ODPProcesses");
+            //item.ODPId
+
+            var unfinished = item.ODP.ODPProcesses.Count(W => W.Status != ODPProcessStatus.Finished.Value);
+
+            if (unfinished == 0) item.ODP.FinishedDate = DateTime.Now;
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "ODP", new { id = item.ODPId } );
+            //return RedirectToAction("Index", "ODPProcesses");
         }
 
         // GET: ODPProcesses/Create
         [Authorize(Roles = "Manager")]
         public ActionResult Create() {
-            ViewBag.ODPId = new SelectList(db.ODPs, "Id", "NODP");
+
+            if (Session["CurrentODP"] != null) {
+                ViewBag.ODPId = new SelectList(db.ODPs, "Id", "NODP", (int)Session["CurrentODP"]);
+            } else {
+                ViewBag.ODPId = new SelectList(db.ODPs, "Id", "NODP");
+            }
+            Session["CurrentODP"] = null;
+
             ViewBag.ProcessId = new SelectList(db.Processes, "Id", "Title");
             ViewBag.UserId = new SelectList(db.vwUsers, "Id", "Username");
             ViewBag.Status = new SelectList(ODPProcessStatus.GetList(), "Value", "Name");
