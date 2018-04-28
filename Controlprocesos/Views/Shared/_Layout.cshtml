@@ -3,10 +3,15 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - Control Procesos</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link rel="stylesheet" type="text/css" href="~/Content/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dtadmin/dt-sidebar.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dtadmin/dt-gradients.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dtadmin/dt-theme.css" />
+    <link rel="stylesheet" type="text/css" href="~/Content/dtadmin/dt-styles.css" />
+    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Lato">
     @RenderSection("Styles", required: false)
 </head>
 <body>
@@ -18,12 +23,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <a href="@Url.Action("Index","Home", new { area = "" })" class="navbar-brand"> <i class="fa fa-address-book-o"></i> Control procesos </a>
+                @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
 
                     <li>@Html.ActionLink("Clientes", "Index", "Clients")</li>
                     <li>@Html.ActionLink("Procesos", "Index", "Processes")</li>
@@ -31,6 +36,7 @@
                     <li>@Html.ActionLink("Procesos de ODP", "Index", "ODPProcesses")</li>
                     <li>@Html.ActionLink("Empleados", "Index", "Users")</li>
 
+                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -40,13 +46,14 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Control Procesos</p>
         </footer>
     </div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/dtadmin/simple-sidebar.js"></script>
     <script src="~/Scripts/site.js"></script>
 </body>
 </html>
